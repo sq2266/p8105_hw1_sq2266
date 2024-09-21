@@ -1,0 +1,52 @@
+---
+title: "HW1 document"
+output: github_document
+---
+
+## Problem 1
+```{r}
+data("penguins", package = "palmerpenguins")
+
+```
+
+## Description 
+
+This `penguins`dataset shows total collected 344 samples of penguins from 2007 to 2009 with 3 different species across different locations. This dataset also includes variables: `species`, `island`, `bill_length_mm` and`bill_ depth_mm`, `flipper_length_mm`, `body_mass_g`, `sex`, and `year`. There are total 334 `nrow` and total 8 `ncol`. The mean flipper length is 200.9152.
+
+## Mean of flipper_length
+```{r}
+library(tidyverse)
+mean_flipper_length = mean(pull(penguins, flipper_length_mm), na.rm=TRUE)
+mean_flipper_length
+```
+
+
+##Scatterplot
+```{r}
+library(ggplot2)
+library(palmerpenguins)
+
+# Load the penguins dataset
+data("penguins")
+
+# Create a scatterplot
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+## Save image
+```{r}
+ggsave("penguins_scatterplot.png")
+```
+
+## Problem 2
+
+```{r}
+library(tidyverse)
+example_df = tibble (
+  vec_number = rnorm(10),
+  vec_logical = vec_number > 0,
+  char_vec = c("1","2","3","4","5","6","7","8","9","10"),
+  fact_vec = factor(sample(c("level1","level2","level3"),10, replace = TRUE)))
+print(example_df)
+```
+
